@@ -4,7 +4,27 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+<ion-content>
+  <div class="header" padding>
+    <h2>Olá, {{ user }}!</h2>
+    <p>Terapeuta: {{ terapeuta }}</p>
+  </div>
+  <div class="tarefas" padding>
+    <h3>Tarefas</h3>
+    <ion-list>
+      <ion-item *ngFor="let item of items">
+        <ion-label>{{ item }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-card>
+    <!-- <ion-img src="/assets/myImg.png"></ion-img> -->
+    <ion-card-header>
+      <ion-card-title>Envie uma mensagem a seu terapeuta</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>The content for this card</p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
