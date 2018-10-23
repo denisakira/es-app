@@ -5,27 +5,38 @@
 </ion-header>
 
 <ion-content>
-  <div class="header" padding>
-    <h2>Olá, {{ user }}!</h2>
-    <p>Terapeuta: {{ terapeuta }}</p>
+
+  <!-- Seção de boas vindas ao usuário -->
+  <div class="header--welcome" padding>
+    <div class="header-welcome-text">
+      <h2>Olá, {{ user }}!</h2>
+      <p>Terapeuta: {{ terapeuta }}</p>
+    </div>
+    <div class="header--welcome-photo">
+      <img src="/assets/images/mailbox-opt.jpg" alt="avatar">
+    </div>
   </div>
-  <div class="tarefas" padding>
-    <h3>Tarefas</h3>
+  
+  <!-- Seção das tarefas -->
+  <div class="tasks" padding>
+    <h2>Tarefas</h2>
     <ion-list>
       <ion-item *ngFor="let item of items">
         <ion-label>{{ item }}</ion-label>
       </ion-item>
     </ion-list>
   </div>
-  <ion-card>
-    <!-- <ion-img src="/assets/myImg.png"></ion-img> -->
+
+  <!-- Seção do contato com o terapeuta -->
+  <ion-card class="contact">
+    <ion-img src="/assets/images/mailbox-opt.jpg"></ion-img>
     <ion-card-header>
-      <ion-card-title>Mensagem</ion-card-title>
+      <ion-card-title>Converse com seu terapeuta</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <!-- <p>The content for this card</p> -->
-      <ion-label>Mensagem</ion-label>
-      <ion-input type="text" placeholder="Mensagem"></ion-input>
+      <ion-item>
+        <ion-input required type="text" placeholder="Mensagem"></ion-input>
+      </ion-item>
     </ion-card-content>
   </ion-card>
 

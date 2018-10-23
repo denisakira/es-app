@@ -2,3 +2,32 @@ hr {
     width: 1em;
     color: blue;
 }
+
+.header--welcome {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    // .header--welcome-text {
+    //     display: flex;
+    //     flex-direction: column;
+    // }
+
+    .header--welcome-photo {
+        img {
+            width: 100px;
+            height: 100px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+    }
+}
+
+.contact {
+    input {
+        border: 0;
+        outline: 0;
+        background: transparent;
+        border-bottom: 1px solid black;
+    }
+
+}
