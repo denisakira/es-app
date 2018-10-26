@@ -5,21 +5,20 @@ hr {
     color: blue;
 }
 
-.header--welcome {
+.welcome {
     display: grid;
     grid-template-columns: 2fr 1fr;
 
-    .header--welcome-text {
+    .welcome--text {
 
         h2,
         p {
             font-family: 'Old Standard TT',
                 serif;
         }
-
     }
 
-    .header--welcome-photo {
+    .welcome--photo {
         img {
             width: 100px;
             height: 100px;
@@ -37,5 +36,10 @@ hr {
     .contact--img {
         max-height: 30vh;
         overflow: hidden;
+    }
+
+    .contact--form {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
     }
 }

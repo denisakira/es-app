@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { HomePage } from './home.page';
     FormsModule,
     RouterModule.forChild([{ path: '', component: HomePage }])
   ],
+  providers: [EmailComposer],
   declarations: [HomePage]
 })
 export class HomePageModule {}
