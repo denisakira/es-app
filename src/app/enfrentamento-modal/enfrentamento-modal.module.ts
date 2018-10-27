@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { EnfrentamentoModalPage } from './enfrentamento-modal.page';
+import { UserService } from '../services/user.service';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
+  providers: [UserService],
   declarations: [EnfrentamentoModalPage]
 })
 export class EnfrentamentoModalPageModule {}
