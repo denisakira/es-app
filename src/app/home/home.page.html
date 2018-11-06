@@ -7,21 +7,21 @@
 <ion-content>
 
   <!-- Seção de boas vindas ao usuário -->
-  <div class="header--welcome" padding>
-    <div class="header--welcome-text">
+  <div class="welcome" padding>
+    <div class="welcome--text">
       <h2>Olá, {{ user }}!</h2>
       <p>Terapeuta: {{ terapeuta }}</p>
     </div>
-    <div class="header--welcome-photo">
+    <div class="welcome--photo">
       <img src="/assets/images/mailbox-opt.jpg" alt="avatar">
     </div>
   </div>
-  
+
   <!-- Seção das tarefas -->
   <div class="tasks" padding>
     <h2>Tarefas</h2>
-    <ion-list>
-      <ion-item *ngFor="let item of items">
+    <ion-list *ngFor="let item of items">
+      <ion-item>
         <ion-label>{{ item }}</ion-label>
       </ion-item>
     </ion-list>
@@ -33,10 +33,16 @@
     <ion-card-header>
       <ion-card-title>Converse com seu terapeuta</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        <ion-input required type="text" placeholder="Mensagem"></ion-input>
+    <ion-card-content class="contact--form">
+      <ion-item class="contact--input">
+        <ion-input 
+          required type="text" 
+          placeholder="Mensagem"
+        ></ion-input>
       </ion-item>
+      <ion-button (click)="sendMessage()" class="contact--btn">
+        <ion-icon slot="icon-only" name="send"></ion-icon>
+      </ion-button>
     </ion-card-content>
   </ion-card>
 

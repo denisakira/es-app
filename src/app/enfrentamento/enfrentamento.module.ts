@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { EnfrentamentoPage } from './enfrentamento.page';
+import { EnfrentamentoModalPageModule } from '../enfrentamento-modal/enfrentamento-modal.module';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    EnfrentamentoModalPageModule,
     RouterModule.forChild(routes)
   ],
   declarations: [EnfrentamentoPage]

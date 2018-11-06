@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cartão de enfrentamento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ul>
+    <li *ngFor="let user of users">
+      {{ user.nome }}
+    </li>
+  </ul>
+
+  <ion-button (click)="closeModal()">
+    <ion-icon slot="icon-only" name="close"></ion-icon>
+  </ion-button>
+</ion-content>
