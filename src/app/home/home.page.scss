@@ -1,1 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Charmonman|Old+Standard+TT');
 
+hr {
+    width: 1em;
+    color: blue;
+}
+
+.header--welcome {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    .header--welcome-text {
+
+        h2,
+        p {
+            font-family: 'Old Standard TT',
+                serif;
+        }
+
+    }
+
+    .header--welcome-photo {
+        img {
+            width: 100px;
+            height: 100px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+    }
+}
+
+.contact {
+    font-family: 'Charmonman',
+        cursive;
+
+
+    .contact--img {
+        max-height: 30vh;
+        overflow: hidden;
+    }
+}

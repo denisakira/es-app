@@ -4,7 +4,40 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+<ion-content>
+
+  <!-- Seção de boas vindas ao usuário -->
+  <div class="header--welcome" padding>
+    <div class="header--welcome-text">
+      <h2>Olá, {{ user }}!</h2>
+      <p>Terapeuta: {{ terapeuta }}</p>
+    </div>
+    <div class="header--welcome-photo">
+      <img src="/assets/images/mailbox-opt.jpg" alt="avatar">
+    </div>
+  </div>
+  
+  <!-- Seção das tarefas -->
+  <div class="tasks" padding>
+    <h2>Tarefas</h2>
+    <ion-list>
+      <ion-item *ngFor="let item of items">
+        <ion-label>{{ item }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!-- Seção do contato com o terapeuta -->
+  <ion-card class="contact">
+    <ion-img class="contact--img" src="/assets/images/contact-3-opt.jpg"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Converse com seu terapeuta</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input required type="text" placeholder="Mensagem"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
