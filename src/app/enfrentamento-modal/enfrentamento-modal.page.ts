@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { UserService, User } from "../services/user.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-enfrentamento-modal",
@@ -8,7 +9,7 @@ import { UserService, User } from "../services/user.service";
   styleUrls: ["./enfrentamento-modal.page.scss"]
 })
 export class EnfrentamentoModalPage implements OnInit {
-  users: User[];
+  users: Observable<User[]>;
 
   constructor(
     public modalController: ModalController,
@@ -16,9 +17,7 @@ export class EnfrentamentoModalPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.userService.getUsers().subscribe(res => {
-      this.users = res;
-    });
+    this.users = this.userService.getUsers();
   }
 
   closeModal() {

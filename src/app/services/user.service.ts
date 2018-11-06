@@ -7,6 +7,7 @@ import { Observable } from "rxjs";
 
 export interface User {
   nome: string;
+  email: string;
 }
 
 @Injectable({
