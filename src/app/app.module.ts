@@ -14,9 +14,10 @@ import { environment } from '../config/config';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { ReactiveFormsModule } from '@angular/forms';
+import { EnfrentamentoFormComponent } from './enfrentamento-form/enfrentamento-form.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, EnfrentamentoFormComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
