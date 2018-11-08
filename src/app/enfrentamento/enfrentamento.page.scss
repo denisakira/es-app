@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Charmonman|Old+Standard+TT');
+
+h1 {
+    font-family: 'Old Standard TT',
+        serif;
+}
+
+.add-new {
+    height: calc(100% - $range-ios-slider-height);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
