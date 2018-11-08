@@ -9,20 +9,33 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { IonicStorageModule } from '@ionic/storage';
+
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../config/config';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { ReactiveFormsModule } from '@angular/forms';
+import { EnfrentamentoFormComponent } from './enfrentamento-form/enfrentamento-form.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, EnfrentamentoFormComponent],
   entryComponents: [],
   imports: [
+    BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    IonicStorageModule.forRoot(),
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    ReactiveFormsModule,
   ],
   providers: [
     StatusBar,

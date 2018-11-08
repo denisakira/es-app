@@ -9,8 +9,9 @@
   <!-- Seção de boas vindas ao usuário -->
   <div class="welcome" padding>
     <div class="welcome--text">
-      <h2>Olá, {{ user }}!</h2>
-      <p>Terapeuta: {{ terapeuta }}</p>
+      <h2>Olá, {{ (user | async)?.nome }}!</h2>
+
+      <p>Terapeuta: {{ (user | async)?.terapeuta }}</p>
     </div>
     <div class="welcome--photo">
       <img src="/assets/images/mailbox-opt.jpg" alt="avatar">
