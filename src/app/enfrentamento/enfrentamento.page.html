@@ -5,5 +5,22 @@
 </ion-header>
 
 <ion-content padding>
+  <h1 center>
+    Cartões de Enfrentamento
+  </h1>
+
+  <!-- Slider -->
+  <ion-slides pager="true" margin-bottom>
+    <ion-slide>
+      <img src="/assets/images/mailbox-opt.jpg" alt="avatar">
+    </ion-slide>
+    <ion-slide>
+      <h1>Slide 2</h1>
+    </ion-slide>
+  </ion-slides>
+  
+  <div class="add-new" margin-top>
+    <ion-button (click)="presentModal()">Novo cartão</ion-button>
+  </div>
 
 </ion-content>
