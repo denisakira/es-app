@@ -4,9 +4,9 @@ import { UserService, User } from '../services/user.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-home",
-  templateUrl: "home.page.html",
-  styleUrls: ["home.page.scss"]
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss']
 })
 export class HomePage implements OnInit {
   users: Observable<User[]>;
@@ -20,8 +20,8 @@ export class HomePage implements OnInit {
     private userService: UserService
   ) {
     // this.user = "Mundo";
-    this.terapeuta = "Terapeuta";
-    this.items = ["item", "item2"];
+    this.terapeuta = 'Terapeuta';
+    this.items = ['item', 'item2'];
   }
 
   ngOnInit() {
@@ -32,18 +32,19 @@ export class HomePage implements OnInit {
   sendMessage() {
     this.emailComposer.isAvailable().then((available: boolean) => {
       if (available) {
-        let email = {
-          to: "max@mustermann.de",
-          cc: "erika@mustermann.de",
-          bcc: ["john@doe.com", "jane@doe.com"],
-          subject: "TCC - " + this.user,
-          body: "How are you? Nice greetings from Leipzig",
-          isHtml: true
-        };
-
-        // Send a text message using default options
-        this.emailComposer.open(email);
       }
+
+      const email = {
+        to: 'max@mustermann.de',
+        cc: 'erika@mustermann.de',
+        bcc: ['john@doe.com', 'jane@doe.com'],
+        subject: 'TCC - ' + this.user,
+        body: 'How are you? Nice greetings from Leipzig',
+        isHtml: true
+      };
+
+      // Send a text message using default options
+      this.emailComposer.open(email);
     });
   }
 }

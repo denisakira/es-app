@@ -1,7 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>Cartão de enfrentamento</ion-title>
   </ion-toolbar>
@@ -18,7 +20,4 @@
     </ion-button>
   </form>
 
-  <ion-button (click)="closeModal()">
-    <ion-icon slot="icon-only" name="close"></ion-icon>
-  </ion-button>
 </ion-content>
