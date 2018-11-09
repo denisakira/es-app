@@ -5,12 +5,10 @@ import { AuthenticationService } from './authentication.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate{
-
-  constructor(public auth: AuthenticationService) { }
+export class AuthGuardService implements CanActivate {
+  constructor(public auth: AuthenticationService) {}
 
   canActivate(): boolean {
     return this.auth.isAuthenticated();
   }
-  
 }
