@@ -24,9 +24,9 @@ export class EntrarPage implements OnInit {
    //   this.storage.set(this.key,this.email);
    // }
 
-
     this.angularFireAuth.auth.signInWithEmailAndPassword(email, password).then((user) => {
       this.authService.login();
+      this.navTabs();
     });
   }
 
