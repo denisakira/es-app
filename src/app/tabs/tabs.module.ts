@@ -11,6 +11,7 @@ import { ContactPageModule } from '../contact/contact.module';
 import { AboutPageModule } from '../about/about.module';
 import { HomePageModule } from '../home/home.module';
 import { EnfrentamentoPageModule } from '../enfrentamento/enfrentamento.module';
+import { HumorPageModule } from '../humor/humor.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { EnfrentamentoPageModule } from '../enfrentamento/enfrentamento.module';
     AboutPageModule,
     ContactPageModule,
     EnfrentamentoPageModule,
+    HumorPageModule,
   ],
   declarations: [TabsPage]
 })

@@ -6,6 +6,7 @@ import { HomePage } from '../home/home.page';
 import { AboutPage } from '../about/about.page';
 import { ContactPage } from '../contact/contact.page';
 import { EnfrentamentoPage } from '../enfrentamento/enfrentamento.page';
+import { HumorPage } from '../humor/humor.page';
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
         path: 'enfrentamento',
         outlet: 'enfrentamento',
         component: EnfrentamentoPage
+      },
+      {
+        path: 'humor',
+        outlet: 'humor',
+        component: HumorPage
       },
     ]
   },
