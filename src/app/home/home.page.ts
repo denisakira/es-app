@@ -31,9 +31,6 @@ export class HomePage implements OnInit {
 
   sendMessage() {
     this.emailComposer.isAvailable().then((available: boolean) => {
-      if (available) {
-      }
-
       const email = {
         to: 'max@mustermann.de',
         cc: 'erika@mustermann.de',

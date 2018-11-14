@@ -13,9 +13,9 @@
   <form [formGroup]="enfrentamentoForm" (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label position="floating">Descrição</ion-label>
-      <ion-input formControlName="descricao" type="text"></ion-input>
+      <ion-input required formControlName="descricao" type="text"></ion-input>
     </ion-item>
-    <ion-button block color="primary" type="submit" [disabled]="enfrentamentoForm.invalid">
+    <ion-button block color="primary" type="submit" [disabled]="!enfrentamentoForm.valid">
       Ok
     </ion-button>
   </form>

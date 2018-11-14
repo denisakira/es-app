@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../config/config';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ReactiveFormsModule } from '@angular/forms';
 

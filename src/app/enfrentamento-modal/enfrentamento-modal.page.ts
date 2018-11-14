@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { UserService, User } from '../services/user.service';
+import { UserService, User, Cartao } from '../services/user.service';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -9,23 +9,27 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './enfrentamento-modal.page.html',
   styleUrls: ['./enfrentamento-modal.page.scss']
 })
-export class EnfrentamentoModalPage implements OnInit {
+export class EnfrentamentoModalPage {
   enfrentamentoForm: FormGroup = this.fb.group({
     descricao: ['']
   });
 
   constructor(
     public modalController: ModalController,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userService: UserService
   ) {}
-
-  ngOnInit() {}
 
   closeModal() {
     this.modalController.dismiss();
   }
 
-  onSubmit() {
-    console.log(this.enfrentamentoForm);
+  async onSubmit() {
+    const cartao: Cartao = {
+      descricao: this.enfrentamentoForm.value.descricao
+    };
+    this.modalController.dismiss();
+    const res = this.userService.addCartao(cartao);
+    console.log(res);
   }
 }
