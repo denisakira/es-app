@@ -13,6 +13,7 @@ export interface User {
 
 export interface Cartao {
   descricao: string;
+  foto: string;
 }
 
 @Injectable({
@@ -32,7 +33,6 @@ export class UserService {
   constructor(private afs: AngularFirestore) {
     this.usersCollection = afs.collection<User>('users');
     this.userDoc = afs.doc<User>('users/wz6Lpu8XQqvfRaFHTZMt');
-
   }
 
   getUsers() {
@@ -48,6 +48,14 @@ export class UserService {
   getCartoes() {
     this.cartoes = this.userDoc.collection<Cartao>('cartoes').valueChanges();
     return this.cartoes;
+  }
+
+  getCartao() {
+    this.cartao = this.userDoc
+      .collection<Cartao>('cartoes')
+      .doc<Cartao>('SaIQ4wMRo9osMlIMWzEn')
+      .valueChanges();
+    return this.cartao;
   }
 
   addCartao(cartao: Cartao) {

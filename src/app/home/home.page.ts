@@ -19,8 +19,6 @@ export class HomePage implements OnInit {
     private emailComposer: EmailComposer,
     private userService: UserService
   ) {
-    // this.user = "Mundo";
-    this.terapeuta = 'Terapeuta';
     this.items = ['item', 'item2'];
   }
 
