@@ -26,8 +26,7 @@ export class EnfrentamentoPage implements OnInit {
   async presentModal() {
     const modal = await this.modalController.create({
       component: EnfrentamentoModalPage
-      // componentProps: { value: 123 }
-    });
+    }); 
     return await modal.present();
   }
 }
