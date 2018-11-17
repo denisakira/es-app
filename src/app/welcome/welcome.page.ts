@@ -19,9 +19,6 @@ import { map, filter, switchMap } from 'rxjs/operators';
   styleUrls: ['./welcome.page.scss']
 })
 export class WelcomePage implements OnInit {
-  key = 'username';
-  checked: boolean;
-
   key: string = 'username';
   checked : boolean;
   public isLogged: boolean;
