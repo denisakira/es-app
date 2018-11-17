@@ -12,7 +12,7 @@
   <!-- Slider -->
   <ion-slides pager="true" margin-bottom>
     <ion-slide>
-      <img src="/assets/images/mailbox-opt.jpg" alt="avatar">
+      <img [src]="(cartao | async)?.foto" alt="image">
     </ion-slide>
     <ion-slide>
       <h1>Slide 2</h1>

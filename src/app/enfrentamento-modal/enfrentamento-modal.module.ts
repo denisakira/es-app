@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { EnfrentamentoModalPage } from './enfrentamento-modal.page';
 import { UserService } from '../services/user.service';
+import { Camera } from '@ionic-native/camera/ngx';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  providers: [UserService],
+  providers: [UserService, Camera],
   declarations: [EnfrentamentoModalPage]
 })
 export class EnfrentamentoModalPageModule {}

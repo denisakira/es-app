@@ -1,7 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>Cartão de enfrentamento</ion-title>
   </ion-toolbar>
@@ -9,16 +11,14 @@
 
 <ion-content padding>
   <form [formGroup]="enfrentamentoForm" (ngSubmit)="onSubmit()">
+    <ion-img (click)="takePhoto()" [src]="image"></ion-img>
     <ion-item>
       <ion-label position="floating">Descrição</ion-label>
-      <ion-input formControlName="descricao" type="text"></ion-input>
+      <ion-input required formControlName="descricao" type="text"></ion-input>
     </ion-item>
-    <ion-button block color="primary" type="submit" [disabled]="enfrentamentoForm.invalid">
+    <ion-button expand="block" color="primary" type="submit" [disabled]="!enfrentamentoForm.valid">
       Ok
     </ion-button>
   </form>
 
-  <ion-button (click)="closeModal()">
-    <ion-icon slot="icon-only" name="close"></ion-icon>
-  </ion-button>
 </ion-content>

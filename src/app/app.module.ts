@@ -17,6 +17,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../config/config';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     AngularFirestoreModule,
-    ReactiveFormsModule
+    AngularFireStorageModule,
+    ReactiveFormsModule,
   ],
   providers: [
     StatusBar,
