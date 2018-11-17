@@ -11,11 +11,8 @@
 
   <!-- Slider -->
   <ion-slides pager="true" margin-bottom>
-    <ion-slide>
-      <img [src]="(cartao | async)?.foto" alt="image">
-    </ion-slide>
-    <ion-slide>
-      <h1>Slide 2</h1>
+    <ion-slide *ngFor="let cartao of cartoes | async">
+      <img [src]="cartao.foto" alt="image">
     </ion-slide>
   </ion-slides>
   

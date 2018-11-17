@@ -20,27 +20,33 @@ import { map, filter, switchMap } from 'rxjs/operators';
 })
 export class WelcomePage implements OnInit {
   key: string = 'username';
-  checked : boolean;
+  checked: boolean;
   public isLogged: boolean;
   userID: any;
   public userNome: string = '';
-  idToken : any;
+  idToken: any;
   ids: any;
 
-  constructor(public angularFireAuth: AngularFireAuth, private storage: Storage, private route: Router,
-    private authService: AuthenticationService, public firestore: AngularFirestore) { 
-      
-      this.angularFireAuth.authState.subscribe(auth =>{
-        console.log(auth.uid)
-        var db = this.firestore;
-        db.collection("pacientes").doc(auth.uid).get().toPromise().then(
-          doc => {
-            this.userNome = doc.data().Nome;
-            console.log(this.userNome);
-          }
-        )  
-      })
-    }
+  constructor(
+    public angularFireAuth: AngularFireAuth,
+    private storage: Storage,
+    private route: Router,
+    private authService: AuthenticationService,
+    public firestore: AngularFirestore
+  ) {
+    this.angularFireAuth.authState.subscribe(auth => {
+      console.log(auth.uid);
+      var db = this.firestore;
+      db.collection('pacientes')
+        .doc(auth.uid)
+        .get()
+        .toPromise()
+        .then(doc => {
+          this.userNome = doc.data().Nome;
+          console.log(this.userNome);
+        });
+    });
+  }
 
   ngOnInit() {
     /*
@@ -61,28 +67,18 @@ export class WelcomePage implements OnInit {
           });
       }
   });*/
-
   }
 
-  ionViewDidLoad(){
+  ionViewDidLoad() {}
 
-  }
+  customTok() {}
 
-  customTok(){
-
-  }
-
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.authService.authenticationState.subscribe(state => {
       if (state) {
         this.isLogged = true;
 
-
-        
-
-        
         //console.log(this.angularFireAuth.auth.currentUser.uid);
-      
       } else {
         this.isLogged = false;
       }
@@ -101,12 +97,12 @@ export class WelcomePage implements OnInit {
       });
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
     this.route.navigateByUrl('');
   }
 
-  async navTabs(){
+  async navTabs() {
     //you can use either of below
     this.route.navigateByUrl('/app/tabs/(home:home)');
     //this.navCtrl.navigateRoot('/app/tabs/(home:home)')

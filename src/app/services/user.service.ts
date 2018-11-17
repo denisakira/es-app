@@ -5,6 +5,7 @@ import {
   AngularFirestoreDocument
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 export interface User {
   nome: string;
@@ -30,9 +31,9 @@ export class UserService {
   cartoes: Observable<Cartao[]>;
   cartao: Observable<Cartao>;
 
-  constructor(private afs: AngularFirestore) {
-    this.usersCollection = afs.collection<User>('users');
-    this.userDoc = afs.doc<User>('users/wz6Lpu8XQqvfRaFHTZMt');
+  constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
+    this.usersCollection = afs.collection<User>('pacientes');
+    this.userDoc = this.usersCollection.doc<User>(afAuth.auth.currentUser.uid);
   }
 
   getUsers() {

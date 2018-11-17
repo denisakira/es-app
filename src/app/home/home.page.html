@@ -9,23 +9,13 @@
   <!-- Seção de boas vindas ao usuário -->
   <div class="welcome" padding>
     <div class="welcome--text">
-      <h2>Olá, {{ (user | async)?.nome }}!</h2>
+      <h2>Olá, {{ (user | async)?.Nome }}!</h2>
 
-      <p>Terapeuta: {{ (user | async)?.terapeuta }}</p>
+      <p>Terapeuta: {{ (user | async)?.NomeTerapeuta }}</p>
     </div>
     <div class="welcome--photo">
       <img src="/assets/images/mailbox-opt.jpg" alt="avatar">
     </div>
-  </div>
-
-  <!-- Seção das tarefas -->
-  <div class="tasks" padding>
-    <h2>Tarefas</h2>
-    <ion-list *ngFor="let item of items">
-      <ion-item>
-        <ion-label>{{ item }}</ion-label>
-      </ion-item>
-    </ion-list>
   </div>
 
   <!-- Seção do contato com o terapeuta -->
@@ -34,14 +24,16 @@
     <ion-card-header>
       <ion-card-title>Converse com seu terapeuta</ion-card-title>
     </ion-card-header>
-    <ion-card-content class="contact--form">
-      <ion-item class="contact--input">
-        <ion-input required type="text" placeholder="Mensagem"></ion-input>
-      </ion-item>
-      <ion-button (click)="sendMessage()" class="contact--btn">
-        <ion-icon slot="icon-only" name="send"></ion-icon>
-      </ion-button>
-    </ion-card-content>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <ion-card-content class="contact--form">
+        <ion-item class="contact--input">
+          <ion-input formControlName="message" required type="text" placeholder="Mensagem"></ion-input>
+        </ion-item>
+        <ion-button (click)="onSubmit()" class="contact--btn">
+          <ion-icon slot="icon-only" name="send"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </form>
   </ion-card>
 
 </ion-content>

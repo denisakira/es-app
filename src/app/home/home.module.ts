@@ -2,7 +2,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { UserService } from '../services/user.service';
@@ -12,6 +12,7 @@ import { UserService } from '../services/user.service';
     IonicModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild([{ path: '', component: HomePage }])
   ],
   providers: [EmailComposer, UserService],
