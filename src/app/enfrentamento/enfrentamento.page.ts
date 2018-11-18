@@ -26,7 +26,6 @@ export class EnfrentamentoPage implements OnInit {
 
   async onClick(cartao) {
     const update = { ...cartao, concluido: true };
-    console.log(update);
     this.userService.updateCartao(update);
   }
 
