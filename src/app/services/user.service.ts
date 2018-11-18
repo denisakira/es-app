@@ -37,7 +37,7 @@ export class UserService {
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
     this.usersCollection = afs.collection<User>('pacientes');
     this.userDoc = this.usersCollection.doc<User>(afAuth.auth.currentUser.uid);
-    this.cartoesCollection = this.userDoc.collection<Cartao>('cartoes');
+    this.cartoesCollection = this.userDoc.collection<Cartao>('cartoes', ref => ref.where('concluido', '==', false));
   }
 
   getUsers() {
