@@ -10,16 +10,22 @@ import { Cartao, UserService } from '../services/user.service';
   styleUrls: ['./enfrentamento.page.scss']
 })
 export class EnfrentamentoPage implements OnInit {
-  cartoes: Observable<Cartao[]>;
+  cartoes: Cartao[];
 
   constructor(
     public modalController: ModalController,
     private userService: UserService
   ) {
-    this.cartoes = userService.getCartoes();
+    userService.getCartoes().subscribe((res) => {
+      this.cartoes = res;
+    });
   }
 
   ngOnInit() {}
+
+  onClick(cartao) {
+    console.log(cartao);
+  }
 
   async presentModal() {
     const modal = await this.modalController.create({

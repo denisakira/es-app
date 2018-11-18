@@ -1,23 +1,29 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Enfrentamento</ion-title>
+    <ion-title>Cartões de Enfrentamento</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <h1 center>
-    Cartões de Enfrentamento
-  </h1>
-
   <!-- Slider -->
   <ion-slides pager="true" margin-bottom>
-    <ion-slide *ngFor="let cartao of cartoes | async">
-      <img [src]="cartao.foto" alt="image">
+    <ion-slide class="slider" *ngFor="let cartao of cartoes">
+      <ion-card>
+        <img class="slider--img" [src]="cartao.foto" alt="image">
+        <p class="slider--text">{{ cartao.descricao }}</p>
+      </ion-card>
+      <ion-button (click)="onClick(cartao)" fill="outline" expand="block">
+        <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+        Concluído
+      </ion-button>
     </ion-slide>
   </ion-slides>
-  
-  <div class="add-new" margin-top>
-    <ion-button (click)="presentModal()">Novo cartão</ion-button>
-  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="presentModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 
 </ion-content>
