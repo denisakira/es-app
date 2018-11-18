@@ -33,6 +33,7 @@ export class EnfrentamentoModalPage {
     const cartao: Cartao = {
       descricao: this.enfrentamentoForm.value.descricao,
       foto: this.image,
+      concluido: false,
     };
     this.userService.addCartao(cartao).then(res => {
       this.closeModal();

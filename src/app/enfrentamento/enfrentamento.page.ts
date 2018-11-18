@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { EnfrentamentoModalPage } from '../enfrentamento-modal/enfrentamento-modal.page';
 import { Observable } from 'rxjs';
 import { Cartao, UserService } from '../services/user.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-enfrentamento',
@@ -16,15 +17,17 @@ export class EnfrentamentoPage implements OnInit {
     public modalController: ModalController,
     private userService: UserService
   ) {
-    userService.getCartoes().subscribe((res) => {
+    userService.getCartoes().subscribe(res => {
       this.cartoes = res;
     });
   }
 
   ngOnInit() {}
 
-  onClick(cartao) {
-    console.log(cartao);
+  async onClick(cartao) {
+    const update = { ...cartao, concluido: true };
+    console.log(update);
+    this.userService.updateCartao(update);
   }
 
   async presentModal() {

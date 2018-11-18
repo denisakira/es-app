@@ -6,6 +6,7 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { map } from 'rxjs/operators';
 
 export interface User {
   nome: string;
@@ -13,8 +14,10 @@ export interface User {
 }
 
 export interface Cartao {
+  id?: string;
   descricao: string;
   foto: string;
+  concluido: boolean;
 }
 
 @Injectable({
@@ -34,6 +37,7 @@ export class UserService {
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
     this.usersCollection = afs.collection<User>('pacientes');
     this.userDoc = this.usersCollection.doc<User>(afAuth.auth.currentUser.uid);
+    this.cartoesCollection = this.userDoc.collection<Cartao>('cartoes');
   }
 
   getUsers() {
@@ -47,20 +51,32 @@ export class UserService {
   }
 
   getCartoes() {
-    this.cartoes = this.userDoc.collection<Cartao>('cartoes').valueChanges();
+    this.cartoes = this.cartoesCollection.snapshotChanges().pipe(
+      map(actions =>
+        actions.map(a => {
+          const data = a.payload.doc.data() as Cartao;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      )
+    );
     return this.cartoes;
   }
 
-  getCartao() {
+  updateCartao(cartao: Cartao) {
+    const res = this.cartoesCollection.doc(cartao.id).update(cartao);
+    console.log(res);
+  }
+
+  getCartao(id: string) {
     this.cartao = this.userDoc
       .collection<Cartao>('cartoes')
-      .doc<Cartao>('SaIQ4wMRo9osMlIMWzEn')
+      .doc<Cartao>(id)
       .valueChanges();
     return this.cartao;
   }
 
   addCartao(cartao: Cartao) {
-    this.cartoesCollection = this.userDoc.collection<Cartao>('cartoes');
     return this.cartoesCollection.add(cartao);
   }
 }
