@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { UserService, User } from '../services/user.service';
 import { Observable } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -9,32 +10,34 @@ import { Observable } from 'rxjs';
   styleUrls: ['home.page.scss']
 })
 export class HomePage implements OnInit {
-  users: Observable<User[]>;
+  contactForm: FormGroup = this.fb.group({
+    message: ['']
+  });
+
   user: Observable<User>;
-  // user: string;
   terapeuta: string;
   items: string[];
 
   constructor(
     private emailComposer: EmailComposer,
-    private userService: UserService
-  ) {
-    this.items = ['item', 'item2'];
-  }
+    private userService: UserService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
-    this.users = this.userService.getUsers();
     this.user = this.userService.getUser();
   }
 
-  sendMessage() {
+  onSubmit() {
+    this.sendMessage(this.contactForm.value.message)
+  }
+
+  sendMessage(message: string) {
     this.emailComposer.isAvailable().then((available: boolean) => {
       const email = {
-        to: 'max@mustermann.de',
-        cc: 'erika@mustermann.de',
-        bcc: ['john@doe.com', 'jane@doe.com'],
-        subject: 'TCC - ' + this.user,
-        body: 'How are you? Nice greetings from Leipzig',
+        to: 'terapeuta@email.com',
+        subject: 'Terapia Cognitivo Comportamental - ' + this.user,
+        body: message,
         isHtml: true
       };
 
