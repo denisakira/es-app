@@ -54,7 +54,7 @@ signUp(email, password, nome, nome_terapeuta) {
   this.afAuth.auth.createUserWithEmailAndPassword(email,password).then(() => {
            // it create a new user starting point of create user
           this.afAuth.auth.currentUser.sendEmailVerification().then(() => { // it send verification mail to the respective user
-           console.log("verification email sent"); 
+           console.log("Email de verificação enviado"); 
            console.log(this.afAuth.auth.currentUser.uid);
            var db = this.firestore;
              db.collection("pacientes").doc(this.afAuth.auth.currentUser.uid).set({
@@ -63,11 +63,11 @@ signUp(email, password, nome, nome_terapeuta) {
              Password : password,
              NomeTerapeuta : nome_terapeuta
            }).then(() => {
-             alert("Document successfully written!");
+             alert("Cadastro efetuado com sucesso");
              this.routee.navigateByUrl('');
   
              }).catch((error) => {  // for when document is not correctly wrote
-              alert("Got an error: "+error); 
+              alert("Erro: "+error); 
                });// end of the firestore data
   
            }).catch((error) => {// for when verification email is not sent to respective mails
