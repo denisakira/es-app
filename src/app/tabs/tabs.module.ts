@@ -10,6 +10,7 @@ import { TabsPage } from './tabs.page';
 import { HomePageModule } from '../home/home.module';
 import { EnfrentamentoPageModule } from '../enfrentamento/enfrentamento.module';
 import { WelcomePageModule } from '../welcome/welcome.module';
+import { OptionsPageModule } from '../options/options.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { WelcomePageModule } from '../welcome/welcome.module';
     TabsPageRoutingModule,
     HomePageModule,
     EnfrentamentoPageModule,
-    WelcomePageModule
+    WelcomePageModule,
+    OptionsPageModule
   ],
   declarations: [TabsPage]
 })
