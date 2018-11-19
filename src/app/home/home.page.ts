@@ -29,7 +29,7 @@ export class HomePage implements OnInit {
   }
 
   onSubmit() {
-    this.sendMessage(this.contactForm.value.message)
+    this.sendMessage(this.contactForm.value.message);
   }
 
   sendMessage(message: string) {
