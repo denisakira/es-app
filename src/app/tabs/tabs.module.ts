@@ -9,6 +9,7 @@ import { TabsPageRoutingModule } from './tabs.router.module';
 import { TabsPage } from './tabs.page';
 import { HomePageModule } from '../home/home.module';
 import { EnfrentamentoPageModule } from '../enfrentamento/enfrentamento.module';
+import { HumorPageModule } from '../humor/humor.module';
 import { WelcomePageModule } from '../welcome/welcome.module';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { WelcomePageModule } from '../welcome/welcome.module';
     TabsPageRoutingModule,
     HomePageModule,
     EnfrentamentoPageModule,
+    HumorPageModule,
     WelcomePageModule
   ],
   declarations: [TabsPage]
