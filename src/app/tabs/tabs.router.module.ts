@@ -3,10 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
 import { HomePage } from '../home/home.page';
-import { AboutPage } from '../about/about.page';
-import { ContactPage } from '../contact/contact.page';
 import { EnfrentamentoPage } from '../enfrentamento/enfrentamento.page';
 import { HumorPage } from '../humor/humor.page';
+import { WelcomePage } from '../welcome/welcome.page';
 
 const routes: Routes = [
   {
@@ -24,16 +23,6 @@ const routes: Routes = [
         component: HomePage
       },
       {
-        path: 'about',
-        outlet: 'about',
-        component: AboutPage
-      },
-      {
-        path: 'contact',
-        outlet: 'contact',
-        component: ContactPage
-      },
-      {
         path: 'enfrentamento',
         outlet: 'enfrentamento',
         component: EnfrentamentoPage
@@ -42,6 +31,10 @@ const routes: Routes = [
         path: 'humor',
         outlet: 'humor',
         component: HumorPage
+      },
+      { path: 'welcome', 
+        outlet: 'welcome',
+        component: WelcomePage 
       },
     ]
   },

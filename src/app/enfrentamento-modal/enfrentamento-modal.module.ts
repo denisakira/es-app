@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
 import { EnfrentamentoModalPage } from './enfrentamento-modal.page';
 import { UserService } from '../services/user.service';
+import { Camera } from '@ionic-native/camera/ngx';
 
 const routes: Routes = [
   {
@@ -18,11 +19,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  providers: [UserService],
+  providers: [UserService, Camera],
   declarations: [EnfrentamentoModalPage]
 })
 export class EnfrentamentoModalPageModule {}

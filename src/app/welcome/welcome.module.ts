@@ -5,15 +5,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EnfrentamentoPage } from './enfrentamento.page';
-import { EnfrentamentoModalPageModule } from '../enfrentamento-modal/enfrentamento-modal.module';
-import { UserService } from '../services/user.service';
+import { WelcomePage } from './welcome.page';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: EnfrentamentoPage
+    component: WelcomePage
   }
+
 ];
 
 @NgModule({
@@ -21,10 +21,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    EnfrentamentoModalPageModule,
     RouterModule.forChild(routes)
   ],
-  providers: [UserService],
-  declarations: [EnfrentamentoPage]
+  declarations: [WelcomePage]
 })
-export class EnfrentamentoPageModule {}
+export class WelcomePageModule {}

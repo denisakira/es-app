@@ -5,14 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EnfrentamentoPage } from './enfrentamento.page';
-import { EnfrentamentoModalPageModule } from '../enfrentamento-modal/enfrentamento-modal.module';
-import { UserService } from '../services/user.service';
+import { SobrePage } from './sobre.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: EnfrentamentoPage
+    component: SobrePage
   }
 ];
 
@@ -21,10 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    EnfrentamentoModalPageModule,
     RouterModule.forChild(routes)
   ],
-  providers: [UserService],
-  declarations: [EnfrentamentoPage]
+  declarations: [SobrePage]
 })
-export class EnfrentamentoPageModule {}
+export class SobrePageModule {}

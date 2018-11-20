@@ -1,27 +1,63 @@
-import { Component, OnInit } from "@angular/core";
-import { ModalController } from "@ionic/angular";
-import { UserService, User } from "../services/user.service";
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { UserService, User, Cartao } from '../services/user.service';
+import { Observable } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
-  selector: "app-enfrentamento-modal",
-  templateUrl: "./enfrentamento-modal.page.html",
-  styleUrls: ["./enfrentamento-modal.page.scss"]
+  selector: 'app-enfrentamento-modal',
+  templateUrl: './enfrentamento-modal.page.html',
+  styleUrls: ['./enfrentamento-modal.page.scss']
 })
-export class EnfrentamentoModalPage implements OnInit {
-  users: User[];
+export class EnfrentamentoModalPage {
+  enfrentamentoForm: FormGroup = this.fb.group({
+    descricao: ['']
+  });
+  image = '/assets/images/placeholder-image.jpg';
 
   constructor(
     public modalController: ModalController,
-    private userService: UserService
+    private fb: FormBuilder,
+    private userService: UserService,
+    private camera: Camera,
+    private storage: AngularFireStorage,
   ) {}
-
-  ngOnInit() {
-    this.userService.getUsers().subscribe(res => {
-      this.users = res;
-    });
-  }
 
   closeModal() {
     this.modalController.dismiss();
+  }
+
+  async onSubmit() {
+    const cartao: Cartao = {
+      descricao: this.enfrentamentoForm.value.descricao,
+      foto: this.image,
+      concluido: false,
+    };
+    this.userService.addCartao(cartao).then(res => {
+      this.closeModal();
+    });
+  }
+
+  takePhoto() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    };
+
+    this.camera.getPicture(options).then(
+      imageData => {
+        // imageData is either a base64 encoded string or a file URI
+        // If it's base64 (DATA_URL):
+        const base64Image = 'data:image/jpeg;base64,' + imageData;
+        this.image = base64Image;
+      },
+      err => {
+        // Handle error
+      }
+    );
   }
 }

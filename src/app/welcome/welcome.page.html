@@ -1,0 +1,21 @@
+
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">  
+ 
+            <div *ngIf="isLogged" text-center>
+              <h1>Bem vindo</h1>
+                <h2>{{userNome}}</h2>
+              </div>
+
+          <div padding>
+            <ion-button *ngIf="isLogged" size="large" href="/app/tabs/(home:home)" expand="block">Entrar</ion-button>
+            <ion-button *ngIf="!isLogged" size="large" href="/entrar" expand="block">Entrar</ion-button>
+            <ion-button *ngIf="!isLogged" expand="block" color="secondary" href="/register" routerDirection="forward">Cadastre-se</ion-button>
+            <ion-button *ngIf="isLogged" expand="block" color="secondary" (click)="logout()" routerDirection="forward">Desconectar</ion-button>
+            <ion-button *ngIf="!isLogged" expand="block" color="secondary" href="/sobre" routerDirection="forward">Sobre</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
