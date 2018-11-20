@@ -30,8 +30,7 @@ export class HumorService {
       map(actions =>
         actions.map(a => {
           const data = a.payload.doc.data() as Humor;
-          const id = a.payload.doc.id;
-          return {id, ...data};
+          return data;
         })
       )
     );
