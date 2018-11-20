@@ -20,9 +20,9 @@ export class EntrarPage implements OnInit {
 
   login(email, password) {
 
-    //if(this.checked){
-   //   this.storage.set(this.key,this.email);
-   // }
+  // if(this.checked){
+    // this.storage.set(this.key,this.email);
+  // }
 
 
     this.angularFireAuth.auth.signInWithEmailAndPassword(email, password).then((user) => {
@@ -30,10 +30,10 @@ export class EntrarPage implements OnInit {
     });
   }
 
-  async navTabs(){
-    //you can use either of below
+  async navTabs() {
+    // you can use either of below
     this.route.navigateByUrl('/app/tabs/(home:home)');
-    //this.navCtrl.navigateRoot('/app/tabs/(home:home)')
-}
+    // this.navCtrl.navigateRoot('/app/tabs/(home:home)')
+  }
 
 }

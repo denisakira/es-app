@@ -6,7 +6,7 @@ import { HomePage } from '../home/home.page';
 import { AboutPage } from '../about/about.page';
 import { ContactPage } from '../contact/contact.page';
 import { EnfrentamentoPage } from '../enfrentamento/enfrentamento.page';
-import { WelcomePage } from '../welcome/welcome.page';
+import { PensamentoAutomaticoPage } from '../pensamento-automatico/pensamento-automatico.page';
 
 const routes: Routes = [
   {
@@ -38,9 +38,10 @@ const routes: Routes = [
         outlet: 'enfrentamento',
         component: EnfrentamentoPage
       },
-      { path: 'welcome', 
-        outlet: 'welcome',
-        component: WelcomePage 
+      {
+        path: 'pensamento',
+        outlet: 'pensamento',
+        component: PensamentoAutomaticoPage
       },
     ]
   },
