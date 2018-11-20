@@ -9,14 +9,21 @@
   <ion-card>
     <ion-card-header>Humor:</ion-card-header>
     <ion-card-content>
-      <ion-range min="-100" max="100">
-        <ion-label>
-          <ion-icon name="sad"></ion-icon>
-        </ion-label>
-        <ion-label>
-          <ion-icon name="happy"></ion-icon> <!-- deveria estar no lado direito -->
-        </ion-label>
-      </ion-range>
+      <form [formGroup]="formHumor">
+        <ion-item>
+          <ion-range min="-100" max="100" required formControlName="humor">
+            <ion-label>
+              <ion-icon name="sad"></ion-icon>
+            </ion-label>
+            <ion-label>
+              <ion-icon name="happy"></ion-icon> <!-- deveria estar no lado direito -->
+            </ion-label>
+          </ion-range>
+        </ion-item>
+        <ion-item>
+          <button ion-button round [disabled]="!formHumor?.valid" (click)="submitNovoHumor()">Salvar</button>
+        </ion-item>
+      </form>
     </ion-card-content>
   </ion-card>
 
@@ -24,10 +31,7 @@
     <ion-card-header>Registros anteriores:</ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item>1</ion-item>
-        <ion-item>2</ion-item>
-        <ion-item>3</ion-item>
-        <ion-item>4</ion-item>
+        <ion-item *ngFor="let humor of humores | async">{{ humor.value }}</ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
