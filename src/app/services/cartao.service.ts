@@ -51,11 +51,6 @@ export class CartaoService {
     return this.cartoes;
   }
 
-  updateCartao(cartao: Cartao) {
-    const res = this.cartoesCollection.doc(cartao.id).update(cartao);
-    console.log(res);
-  }
-
   getCartao(id: string) {
     this.cartao = this.userDoc
       .collection<Cartao>('cartoes')
@@ -66,5 +61,10 @@ export class CartaoService {
 
   addCartao(cartao: Cartao) {
     return this.cartoesCollection.add(cartao);
+  }
+
+  updateCartao(cartao: Cartao) {
+    const res = this.cartoesCollection.doc(cartao.id).update(cartao);
+    console.log(res);
   }
 }
