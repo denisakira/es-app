@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { HumorService, Humor } from '../services/humor.service';
 
 @Component({
   selector: 'app-humor',
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class HumorPage implements OnInit {
   formHumor: FormGroup;
-  humores: Observable<any>;
+  humores: Observable<Humor[]>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,12 +21,19 @@ export class HumorPage implements OnInit {
     this.formHumor = this.formBuilder.group({
       humor: ['', Validators.required],
     });
+  }
+
+  ionViewDidLoad() {
     // Carregamento dos registros salvos.
     this.carregaHumores();
   }
 
   // Salva um novo registro no firebase.
-  submitNovoHumor() {
+  async submitNovoHumor() {
+    const humor: Humor = {
+      value: this.formHumor.value.value
+    };
+    this.humorService.submitNovoHumor(humor);
   }
 
   // Carrega os registros existentes no firebase.
