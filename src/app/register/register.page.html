@@ -16,10 +16,11 @@
           </ion-item>
   
           <ion-item>
-            <ion-input [(ngModel)]="email" (ionInput)="onInputTime($event.target.value)" type="email" placeholder="Email"></ion-input>
+            <ion-input [(ngModel)]="email" type="email" placeholder="Email"></ion-input>
+            <!-- Essa parte comentada é para uma futura implementacao de uma admin page
             <ion-button *ngIf="!isClicked" (click)="clicado(email)" icon-only><ion-icon name="refresh-circle"></ion-icon></ion-button>
             <ion-button *ngIf="!isEmailVali && isClicked" icon-only><ion-icon name="close-circle"></ion-icon></ion-button>
-            <ion-button *ngIf="isEmailVali && isClicked" icon-only><ion-icon name="checkmark-circle"></ion-icon></ion-button>
+            <ion-button *ngIf="isEmailVali && isClicked" icon-only><ion-icon name="checkmark-circle"></ion-icon></ion-button>-->
           </ion-item>
 
           <ion-item>
@@ -27,12 +28,16 @@
           </ion-item>
 
           <ion-item>
-            <ion-input [readonly]="true" [(ngModel)]="nome_terapeuta" type="text" placeholder="Nome do Terapeuta"></ion-input>
-          </ion-item>          
+            <ion-input [(ngModel)]="nome_terapeuta" type="text" placeholder="Nome do Terapeuta"></ion-input>
+          </ion-item>    
+          
+          <ion-item>
+            <ion-input [(ngModel)]="email_terapeuta" type="email" placeholder="Email do Terapeuta"></ion-input>
+          </ion-item>
         </div>
   
         <div padding>
-          <ion-button size="large" (click)="salvar(email, password, nome)" expand="block">Cadastrar</ion-button>
+          <ion-button size="large" (click)="salvar(email, password, nome, nome_terapeuta, email_terapeuta)" expand="block">Cadastrar</ion-button>
         </div>
       </ion-col>
     </ion-row>

@@ -55,6 +55,7 @@ export class AuthenticationService {
     return this.authenticationState.value;
   }
 
+  /* Essa parte comentada é para uma futura implementacao de uma admin page
   async verificaEmail(email_digitado){
     this.match = false;
     const db = this.firestore;
@@ -71,11 +72,11 @@ export class AuthenticationService {
     })   
 
     console.log(this.match);
-  }
+  }*/
 
-  signUp(email, password, nome) {
+  signUp(email, password, nome, nome_terapeuta, email_terapeuta) {
 
-    if(this.match == true && nome != '' && password != ''){
+    if(nome != '' && password != '' && nome_terapeuta != ''){
       this.afAuth.auth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
@@ -91,7 +92,8 @@ export class AuthenticationService {
                 Nome: nome,
                 Email: email,
                 Password: password,
-                NomeTerapeuta: this.nome_tera
+                NomeTerapeuta: nome_terapeuta,
+                EmailTerapeuta: email_terapeuta
               })
               .then(() => {
                 this.routee.navigateByUrl('');
@@ -115,7 +117,6 @@ export class AuthenticationService {
       }); // end of create user method
     }
     else{
-      console.log(this.match)
       alert("Erro");
     }
 

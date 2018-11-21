@@ -14,22 +14,24 @@ export class RegisterPage implements OnInit {
   form: FormGroup;
   public isClicked: Boolean;
   public isEmailVali: Boolean;
-  public nome_terapeuta;
+  //public nome_terapeuta;
 
   constructor(fb: FormBuilder, private auth: AuthenticationService, public router: Router) { 
       this.isClicked = false;
     }
 
-    salvar(email, password, nome){
-      this.auth.signUp(email, password,nome);
+    salvar(email, password, nome, nome_terapeuta, email_terapeuta){
+      this.auth.signUp(email, password, nome, nome_terapeuta, email_terapeuta);
     }
 
+    /* Essa parte comentada é para uma futura implementacao de uma admin page
     onInputTime(email){
      //var tete = this.auth.verificaEmail(email);
      //console.log(tete);
      this.isClicked = false;
-    }
+    }*/
 
+    /* Essa parte comentada é para uma futura implementacao de uma admin page
     async clicado(email){
       this.isClicked = true;
       await this.auth.verificaEmail(email);
@@ -41,7 +43,7 @@ export class RegisterPage implements OnInit {
       else{
         this.isEmailVali = false;
       }
-    }
+    }*/
 
   ngOnInit() {
   }
