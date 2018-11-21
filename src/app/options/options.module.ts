@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { OptionsPage } from './options.page';
+import { UserService } from '../services/user.service';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule
   ],
+  providers: [UserService],
   declarations: [OptionsPage]
 })
 export class OptionsPageModule {}

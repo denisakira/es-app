@@ -9,8 +9,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
 
 export interface User {
-  nome: string;
-  email: string;
+  Nome: string;
+  Email: string;
+  NomeTerapeuta: string;
 }
 
 @Injectable({
@@ -36,5 +37,12 @@ export class UserService {
   getUser() {
     this.user = this.userDoc.valueChanges();
     return this.user;
+  }
+
+  updateUser(user: User) {
+    const res = this.usersCollection
+      .doc(this.afAuth.auth.currentUser.uid)
+      .update(user);
+    console.log(res);
   }
 }

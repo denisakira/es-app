@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import { User, UserService } from '../services/user.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-options',
@@ -11,22 +13,53 @@ import { Router } from '@angular/router';
 export class OptionsPage implements OnInit {
   profileForm: FormGroup = this.fb.group({
     nome: [''],
-    email: [''],
+    email: ['', Validators.email],
     password: [''],
     terapeuta: [''],
     email_terapeuta: ['']
   });
+  currUser: User;
 
   constructor(
     public fb: FormBuilder,
     private authService: AuthenticationService,
+    private userService: UserService,
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userService.getUser().subscribe(res => {
+      this.currUser = res;
+    });
+  }
 
-  onSubmit() {
-    console.log(this.profileForm);
+  async onSubmit() {
+    const data = this.profileForm.value;
+    let update: User = this.currUser;
+
+    if (data.nome !== '') {
+      update = {
+        ...update,
+        Nome: data.nome
+      };
+    }
+
+    if (data.email !== '') {
+      update = {
+        ...update,
+        Email: data.email
+      };
+    }
+
+    if (data.terapeuta !== '') {
+      update = {
+        ...update,
+        NomeTerapeuta: data.terapeuta
+      };
+    }
+    await this.userService.updateUser(update);
+    this.profileForm.reset();
+    this.router.navigateByUrl('/app/tabs/(home:home)');
   }
 
   async logout() {

@@ -22,16 +22,9 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.splashScreen.show();
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-
-      /*this.authenticationService.authenticationState.subscribe(state => {
-        if (state) {
-          this.router.navigate(['']);
-        } else {
-          this.router.navigate(['']);
-        }
-      });*/
     });
   }
 }

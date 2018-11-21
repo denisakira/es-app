@@ -46,7 +46,6 @@ export class WelcomePage implements OnInit {
         .toPromise()
         .then(doc => {
           this.userNome = doc.data().Nome;
-          console.log(this.userNome);
         });
     });
   }
@@ -60,7 +59,6 @@ export class WelcomePage implements OnInit {
       if (state) {
         this.isLogged = true;
 
-        //console.log(this.angularFireAuth.auth.currentUser.uid);
       } else {
         this.isLogged = false;
       }
@@ -81,8 +79,6 @@ export class WelcomePage implements OnInit {
   }
 
   async navTabs() {
-    //you can use either of below
     this.route.navigateByUrl('/app/tabs/(home:home)');
-    //this.navCtrl.navigateRoot('/app/tabs/(home:home)')
   }
 }

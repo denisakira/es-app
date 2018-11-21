@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
     message: ['']
   });
 
-  user: Observable<User>;
+  user: User;
   terapeuta: string;
   items: string[];
 
@@ -25,7 +25,9 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.user = this.userService.getUser();
+    this.userService.getUser().subscribe(res => {
+      this.user = res;
+    });
   }
 
   onSubmit() {
@@ -36,7 +38,7 @@ export class HomePage implements OnInit {
     this.emailComposer.isAvailable().then((available: boolean) => {
       const email = {
         to: 'terapeuta@email.com',
-        subject: 'Terapia Cognitivo Comportamental - ' + this.user,
+        subject: 'Terapia Cognitivo Comportamental - ' + this.user.Nome,
         body: message,
         isHtml: true
       };

@@ -7,6 +7,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { auth } from 'firebase/app';
 import { firebase } from '@firebase/app';
 import { Route, Router, RouterEvent } from '@angular/router';
+
 const TOKEN_KEY = 'auth-token';
 
 @Injectable({
@@ -67,7 +68,6 @@ export class AuthenticationService {
               .set({
                 Nome: nome,
                 Email: email,
-                Password: password,
                 NomeTerapeuta: nome_terapeuta
               })
               .then(() => {
