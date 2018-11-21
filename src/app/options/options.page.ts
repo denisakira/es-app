@@ -30,8 +30,7 @@ export class OptionsPage implements OnInit {
   }
 
   async logout() {
-    const res = await this.authService.logout();
-    console.log(res);
-    this.router.navigateByUrl('');
+    await this.authService.logout();
+    this.router.navigate(['']);
   }
 }

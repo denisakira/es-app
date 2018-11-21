@@ -27,15 +27,14 @@ export class EntrarPage implements OnInit {
 
     this.angularFireAuth.auth
       .signInWithEmailAndPassword(email, password)
-      .then(user => {
-        this.authService.login();
+      .then(async user => {
+        await this.authService.login();
+        console.log('chegou aqui');
+        this.navTabs();
       });
-    this.navTabs();
   }
 
-  async navTabs() {
-    //you can use either of below
+  navTabs() {
     this.route.navigateByUrl('/app/tabs/(home:home)');
-    //this.navCtrl.navigateRoot('/app/tabs/(home:home)')
   }
 }

@@ -27,7 +27,6 @@ const routes: Routes = [
         outlet: 'enfrentamento',
         component: EnfrentamentoPage
       },
-      { path: 'welcome', outlet: 'welcome', component: WelcomePage },
       {
         path: 'options',
         outlet: 'options',

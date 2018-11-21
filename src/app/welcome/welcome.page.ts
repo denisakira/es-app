@@ -35,8 +35,11 @@ export class WelcomePage implements OnInit {
     public firestore: AngularFirestore
   ) {
     this.angularFireAuth.authState.subscribe(auth => {
+      if (!auth) {
+        return;
+      }
       console.log(auth.uid);
-      var db = this.firestore;
+      const db = this.firestore;
       db.collection('pacientes')
         .doc(auth.uid)
         .get()
@@ -48,30 +51,9 @@ export class WelcomePage implements OnInit {
     });
   }
 
-  ngOnInit() {
-    /*
-    this.angularFireAuth.auth.onAuthStateChanged((user) => {
-      
-      if (user) {
-        var db = this.firestore;
-        db.collection("pacientes").doc(user.uid).get().toPromise().then(
-          doc => {
-            this.userNome = doc.data().Nome;
-            console.log(this.userNome);
-          }
-        )  
-          console.log(user.uid); // It shows the Firebase user
-          user.getIdToken().then((idToken) => {  // <------ Check this line
-            console.log(idToken); 
-            // It shows the Firebase token now
-          });
-      }
-  });*/
-  }
+  ngOnInit() {}
 
   ionViewDidLoad() {}
-
-  customTok() {}
 
   ionViewWillEnter() {
     this.authService.authenticationState.subscribe(state => {
@@ -86,10 +68,6 @@ export class WelcomePage implements OnInit {
   }
 
   login(email, password) {
-    //if(this.checked){
-    //   this.storage.set(this.key,this.email);
-    // }
-
     this.angularFireAuth.auth
       .signInWithEmailAndPassword(email, password)
       .then(user => {

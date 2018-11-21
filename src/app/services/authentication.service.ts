@@ -43,6 +43,7 @@ export class AuthenticationService {
 
   logout() {
     return this.storage.remove(TOKEN_KEY).then(() => {
+      this.afAuth.auth.signOut();
       this.authenticationState.next(false);
     });
   }
