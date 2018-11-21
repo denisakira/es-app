@@ -8,32 +8,34 @@ import { AuthenticationService } from '../services/authentication.service';
 @Component({
   selector: 'app-entrar',
   templateUrl: './entrar.page.html',
-  styleUrls: ['./entrar.page.scss'],
+  styleUrls: ['./entrar.page.scss']
 })
 export class EntrarPage implements OnInit {
+  constructor(
+    public angularFireAuth: AngularFireAuth,
+    private storage: Storage,
+    private route: Router,
+    private authService: AuthenticationService
+  ) {}
 
-  constructor(public angularFireAuth: AngularFireAuth, private storage: Storage, private route: Router,
-    private authService: AuthenticationService) { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   login(email, password) {
-
     //if(this.checked){
-   //   this.storage.set(this.key,this.email);
-   // }
+    //   this.storage.set(this.key,this.email);
+    // }
 
-    this.angularFireAuth.auth.signInWithEmailAndPassword(email, password).then((user) => {
-      this.authService.login();
-      this.navTabs();
-    });
+    this.angularFireAuth.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(user => {
+        this.authService.login();
+      });
+    this.navTabs();
   }
 
-  async navTabs(){
+  async navTabs() {
     //you can use either of below
     this.route.navigateByUrl('/app/tabs/(home:home)');
     //this.navCtrl.navigateRoot('/app/tabs/(home:home)')
-}
-
+  }
 }

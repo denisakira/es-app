@@ -27,8 +27,16 @@
       <ion-label position="floating">Password</ion-label>
       <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
+
     <ion-button fill="outline" expand="block" color="primary" type="submit" [disabled]="profileForm.invalid">
       Modificar
+    </ion-button>
+
+    <hr>
+
+    <ion-button (click)="logout()" expand="block" color="danger">
+      <ion-icon slot="icon-only" name="power"></ion-icon>
+      Logout
     </ion-button>
   </form>
 </ion-content>
