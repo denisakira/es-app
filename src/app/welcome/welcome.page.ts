@@ -5,10 +5,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Route, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 
-//pacotes instalados:
-//npm install --save @ionic/storage
-//npm i @ionic/angular
-//npm i @angular/fire
+// pacotes instalados:
+// npm install --save @ionic/storage
+// npm i @ionic/angular
+// npm i @angular/fire
 
 @Component({
   selector: 'app-welcome',
@@ -31,7 +31,7 @@ export class WelcomePage implements OnInit {
   }
 
   login(email, password) {
-    //if(this.checked){
+    // if(this.checked){
     //   this.storage.set(this.key,this.email);
     // }
 
@@ -43,8 +43,8 @@ export class WelcomePage implements OnInit {
   }
 
   async navTabs() {
-    //you can use either of below
+    // you can use either of below
     this.route.navigateByUrl('/app/tabs/(home:home)');
-    //this.navCtrl.navigateRoot('/app/tabs/(home:home)')
+    // this.navCtrl.navigateRoot('/app/tabs/(home:home)')
   }
 }

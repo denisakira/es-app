@@ -6,9 +6,7 @@ const routes: Routes = [
   { path: '', loadChildren: './welcome/welcome.module#WelcomePageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
   { path: 'entrar', loadChildren: './entrar/entrar.module#EntrarPageModule' },
-  { path: 'sobre', loadChildren: './sobre/sobre.module#SobrePageModule' },  { path: 'pensamento-automatico', loadChildren: './pensamento-automatico/pensamento-automatico.module#PensamentoAutomaticoPageModule' },
-
-
+  { path: 'sobre', loadChildren: './sobre/sobre.module#SobrePageModule' },
 ];
 
 @NgModule({
