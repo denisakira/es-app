@@ -9,6 +9,10 @@
               </div>
 
           <div padding>
+            <div text-center>
+                <img src="/assets/images/appsico.png" width="70%" height="70%">
+            </div>
+
             <ion-button *ngIf="isLogged" size="large" href="/app/tabs/(home:home)" expand="block">Entrar</ion-button>
             <ion-button *ngIf="!isLogged" size="large" href="/entrar" expand="block">Entrar</ion-button>
             <ion-button *ngIf="!isLogged" expand="block" color="secondary" href="/register" routerDirection="forward">Cadastre-se</ion-button>
