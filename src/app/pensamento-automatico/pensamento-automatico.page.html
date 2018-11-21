@@ -6,4 +6,28 @@
 
 <ion-content padding>
 
+  <ion-card>
+    <ion-card-header>Pensamento Automático:</ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="formPensamento">
+        <ion-item>
+          <ion-label>Situação:</ion-label>
+          <ion-input required formControlName="situacao"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label>Pensamento automático:</ion-label>
+          <ion-input required formControlName="pensamento"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label>Ação tomada:</ion-label>
+          <ion-input required formControlName="acao"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button [disabled]="!formPensamento?.valid" (click)="submitNovoPensamento()">Salvar</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pensamento-automatico',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pensamento-automatico.page.scss'],
 })
 export class PensamentoAutomaticoPage implements OnInit {
+  formPensamento: FormGroup;
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
+    this.formPensamento = this.formBuilder.group({
+      situacao: ['', Validators.required],
+      pensamento: ['', Validators.required],
+      acao: ['', Validators.required],
+    });
+  }
+
+  async submitNovoPensamento() {
+    console.log('novo pensamento');
   }
 
 }
