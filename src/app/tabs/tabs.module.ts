@@ -10,7 +10,6 @@ import { HomePageModule } from '../home/home.module';
 import { EnfrentamentoPageModule } from '../enfrentamento/enfrentamento.module';
 import { PensamentoAutomaticoPageModule } from '../pensamento-automatico/pensamento-automatico.module';
 import { HumorPageModule } from '../humor/humor.module';
-import { WelcomePageModule } from '../welcome/welcome.module';
 import { OptionsPageModule } from '../options/options.module';
 
 @NgModule({

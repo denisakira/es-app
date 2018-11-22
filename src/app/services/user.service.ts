@@ -12,6 +12,7 @@ export interface User {
   Nome: string;
   Email: string;
   NomeTerapeuta: string;
+  EmailTerapeuta: string;
 }
 
 @Injectable({
