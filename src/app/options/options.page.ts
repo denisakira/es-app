@@ -19,6 +19,7 @@ export class OptionsPage implements OnInit {
     email_terapeuta: ['']
   });
   currUser: User;
+  check = false;
 
   constructor(
     public fb: FormBuilder,
@@ -30,6 +31,7 @@ export class OptionsPage implements OnInit {
   ngOnInit() {
     this.userService.getUser().subscribe(res => {
       this.currUser = res;
+      this.check = true;
     });
   }
 

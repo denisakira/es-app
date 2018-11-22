@@ -31,7 +31,7 @@ export class HumorPage implements OnInit {
   // Salva um novo registro no firebase.
   async submitNovoHumor() {
     const humor: Humor = {
-      value: this.formHumor.value.value
+      value: this.formHumor.value
     };
     this.humorService.submitNovoHumor(humor);
   }
