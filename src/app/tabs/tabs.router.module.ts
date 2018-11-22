@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
 import { HomePage } from '../home/home.page';
-import { AboutPage } from '../about/about.page';
-import { ContactPage } from '../contact/contact.page';
 import { EnfrentamentoPage } from '../enfrentamento/enfrentamento.page';
+import { PensamentoAutomaticoPage } from '../pensamento-automatico/pensamento-automatico.page';
+import { HumorPage } from '../humor/humor.page';
+import { OptionsPage } from '../options/options.page';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: '/tabs/(home:home)',
-        pathMatch: 'full',
+        pathMatch: 'full'
       },
       {
         path: 'home',
@@ -23,19 +24,24 @@ const routes: Routes = [
         component: HomePage
       },
       {
-        path: 'about',
-        outlet: 'about',
-        component: AboutPage
-      },
-      {
-        path: 'contact',
-        outlet: 'contact',
-        component: ContactPage
-      },
-      {
         path: 'enfrentamento',
         outlet: 'enfrentamento',
         component: EnfrentamentoPage
+      },
+      {
+        path: 'pensamento',
+        outlet: 'pensamento',
+        component: PensamentoAutomaticoPage
+      },
+      {
+        path: 'options',
+        outlet: 'options',
+        component: OptionsPage
+      },
+      {
+        path: 'humor',
+        outlet: 'humor',
+        component: HumorPage
       },
     ]
   },

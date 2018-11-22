@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Opções</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Editar perfil</h3>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input formControlName="nome" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">E-Mail</ion-label>
+      <ion-input formControlName="email" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Terapeuta</ion-label>
+      <ion-input formControlName="terapeuta" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">E-Mail do terapeuta</ion-label>
+      <ion-input formControlName="email_terapeuta" type="text"></ion-input>
+    </ion-item>
+
+    <ion-button fill="outline" expand="block" color="primary" type="submit" 
+      [disabled]="profileForm.invalid && check">
+      Modificar
+    </ion-button>
+
+    <hr>
+
+    <ion-button (click)="logout()" expand="block" color="danger">
+      <ion-icon slot="icon-only" name="power"></ion-icon>
+      Logout
+    </ion-button>
+  </form>
+</ion-content>

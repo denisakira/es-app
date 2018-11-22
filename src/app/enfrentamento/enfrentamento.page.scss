@@ -12,3 +12,16 @@ h1 {
     align-content: center;
     align-items: center;
 }
+
+.slider {
+    display: grid;
+    grid-template-rows: 4fr 1fr 1fr;
+
+    .slider--img {
+        max-height: 33vh;
+    }
+
+    .slider--text {
+        max-height: 12vh;
+    }
+}

@@ -1,42 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { UserService, User } from '../services/user.service';
+import { Observable } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss']
 })
-export class HomePage {
-  user: string;
+export class HomePage implements OnInit {
+  contactForm: FormGroup = this.fb.group({
+    message: ['']
+  });
+
+  user: User;
   terapeuta: string;
   items: string[];
 
-  constructor(private emailComposer: EmailComposer) {
-    this.user = 'Mundo';
-    this.terapeuta = 'Terapeuta';
-    this.items = [
-      'item',
-      'item2',
-    ];
+  constructor(
+    private emailComposer: EmailComposer,
+    private userService: UserService,
+    private fb: FormBuilder
+  ) {}
+
+  ngOnInit() {
+    this.userService.getUser().subscribe(res => {
+      this.user = res;
+    });
   }
 
-  sendMessage() {
+  onSubmit() {
+    this.sendMessage(this.contactForm.value.message);
+  }
+
+  sendMessage(message: string) {
     this.emailComposer.isAvailable().then((available: boolean) => {
-      if (available) {
-        let email = {
-          to: 'max@mustermann.de',
-          cc: 'erika@mustermann.de',
-          bcc: ['john@doe.com', 'jane@doe.com'],
-          subject: 'TCC - ' + this.user,
-          body: 'How are you? Nice greetings from Leipzig',
-          isHtml: true
-        };
+      const email = {
+        to: 'terapeuta@email.com',
+        subject: 'Terapia Cognitivo Comportamental - ' + this.user.Nome,
+        body: message,
+        isHtml: true
+      };
 
-        // Send a text message using default options
-        this.emailComposer.open(email);
-
-      }
+      // Send a text message using default options
+      this.emailComposer.open(email);
     });
-
   }
 }
