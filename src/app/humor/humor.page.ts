@@ -6,7 +6,7 @@ import { HumorService, Humor } from '../services/humor.service';
 @Component({
   selector: 'app-humor',
   templateUrl: './humor.page.html',
-  styleUrls: ['./humor.page.scss'],
+  styleUrls: ['./humor.page.scss']
 })
 export class HumorPage implements OnInit {
   formHumor: FormGroup;
@@ -14,16 +14,14 @@ export class HumorPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private humorService: HumorService) { }
+    private humorService: HumorService
+  ) {}
 
   ngOnInit() {
     // Definição do formulario.
     this.formHumor = this.formBuilder.group({
-      humor: ['', Validators.required],
+      humor: ['', Validators.required]
     });
-  }
-
-  ionViewDidLoad() {
     // Carregamento dos registros salvos.
     this.carregaHumores();
   }
@@ -31,14 +29,14 @@ export class HumorPage implements OnInit {
   // Salva um novo registro no firebase.
   async submitNovoHumor() {
     const humor: Humor = {
-      value: this.formHumor.value.value
+      value: this.formHumor.value.humor
     };
     this.humorService.submitNovoHumor(humor);
   }
 
   // Carrega os registros existentes no firebase.
-  carregaHumores() {
-    this.humores = this.humorService.carregaHumores();
+  async carregaHumores() {
+    this.humores = await this.humorService.carregaHumores();
+    console.log(this.humores);
   }
-
 }
