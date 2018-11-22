@@ -22,8 +22,8 @@ import { OptionsPageModule } from '../options/options.module';
     HomePageModule,
     EnfrentamentoPageModule,
     WelcomePageModule,
-    OptionsPageModule
-    HumorPageModule,
+    OptionsPageModule,
+    HumorPageModule
   ],
   declarations: [TabsPage]
 })
