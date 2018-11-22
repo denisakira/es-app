@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { HomePage } from '../home/home.page';
 import { EnfrentamentoPage } from '../enfrentamento/enfrentamento.page';
+import { PensamentoAutomaticoPage } from '../pensamento-automatico/pensamento-automatico.page';
 import { HumorPage } from '../humor/humor.page';
 import { OptionsPage } from '../options/options.page';
 
@@ -26,6 +27,11 @@ const routes: Routes = [
         path: 'enfrentamento',
         outlet: 'enfrentamento',
         component: EnfrentamentoPage
+      },
+      {
+        path: 'pensamento',
+        outlet: 'pensamento',
+        component: PensamentoAutomaticoPage
       },
       {
         path: 'options',

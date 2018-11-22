@@ -5,19 +5,15 @@
 </ion-header>
 
 <ion-content padding>
-  
+
   <ion-card>
     <ion-card-header>Humor:</ion-card-header>
     <ion-card-content>
       <form [formGroup]="formHumor">
         <ion-item>
-          <ion-range min="-100" max="100" required formControlName="humor">
-            <ion-label>
-              <ion-icon name="sad"></ion-icon>
-            </ion-label>
-            <ion-label>
-              <ion-icon name="happy"></ion-icon> <!-- deveria estar no lado direito -->
-            </ion-label>
+          <ion-range min="0" max="100" required formControlName="humor">
+            <ion-icon slot="start" name="sad"></ion-icon>
+            <ion-icon slot="end" name="happy"></ion-icon> <!-- deveria estar no lado direito -->
           </ion-range>
         </ion-item>
         <ion-item>
