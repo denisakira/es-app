@@ -18,7 +18,12 @@ h1 {
     grid-template-rows: 4fr 1fr 1fr;
 
     .slider--img {
-        max-height: 33vh;
+        max-height: 50vh;
+        object-fit: cover;
+
+        img {
+            object-fit: cover;
+        }
     }
 
     .slider--text {
