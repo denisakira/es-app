@@ -11,6 +11,7 @@ import { HomePageModule } from '../home/home.module';
 import { EnfrentamentoPageModule } from '../enfrentamento/enfrentamento.module';
 import { HumorPageModule } from '../humor/humor.module';
 import { WelcomePageModule } from '../welcome/welcome.module';
+import { OptionsPageModule } from '../options/options.module';
 
 @NgModule({
   imports: [
@@ -20,8 +21,9 @@ import { WelcomePageModule } from '../welcome/welcome.module';
     TabsPageRoutingModule,
     HomePageModule,
     EnfrentamentoPageModule,
+    WelcomePageModule,
+    OptionsPageModule
     HumorPageModule,
-    WelcomePageModule
   ],
   declarations: [TabsPage]
 })

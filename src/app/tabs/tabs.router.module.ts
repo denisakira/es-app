@@ -6,6 +6,7 @@ import { HomePage } from '../home/home.page';
 import { EnfrentamentoPage } from '../enfrentamento/enfrentamento.page';
 import { HumorPage } from '../humor/humor.page';
 import { WelcomePage } from '../welcome/welcome.page';
+import { OptionsPage } from '../options/options.page';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: '/tabs/(home:home)',
-        pathMatch: 'full',
+        pathMatch: 'full'
       },
       {
         path: 'home',
@@ -28,13 +29,14 @@ const routes: Routes = [
         component: EnfrentamentoPage
       },
       {
+        path: 'options',
+        outlet: 'options',
+        component: OptionsPage
+      },
+      {
         path: 'humor',
         outlet: 'humor',
         component: HumorPage
-      },
-      { path: 'welcome', 
-        outlet: 'welcome',
-        component: WelcomePage 
       },
     ]
   },

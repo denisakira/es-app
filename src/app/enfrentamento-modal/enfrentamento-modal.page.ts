@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { UserService, User, Cartao } from '../services/user.service';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { CartaoService, Cartao } from '../services/cartao.service';
 
 @Component({
   selector: 'app-enfrentamento-modal',
@@ -20,9 +20,8 @@ export class EnfrentamentoModalPage {
   constructor(
     public modalController: ModalController,
     private fb: FormBuilder,
-    private userService: UserService,
     private camera: Camera,
-    private storage: AngularFireStorage,
+    private cartaoService: CartaoService
   ) {}
 
   closeModal() {
@@ -33,9 +32,10 @@ export class EnfrentamentoModalPage {
     const cartao: Cartao = {
       descricao: this.enfrentamentoForm.value.descricao,
       foto: this.image,
-      concluido: false,
+      concluido: false
     };
-    this.userService.addCartao(cartao).then(res => {
+
+    this.cartaoService.addCartao(cartao).then(res => {
       this.closeModal();
     });
   }

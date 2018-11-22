@@ -35,30 +35,9 @@ export class WelcomePage implements OnInit {
     public firestore: AngularFirestore
   ) { }
 
-  ngOnInit() {
-    /*
-    this.angularFireAuth.auth.onAuthStateChanged((user) => {
-      
-      if (user) {
-        var db = this.firestore;
-        db.collection("pacientes").doc(user.uid).get().toPromise().then(
-          doc => {
-            this.userNome = doc.data().Nome;
-            console.log(this.userNome);
-          }
-        )  
-          console.log(user.uid); // It shows the Firebase user
-          user.getIdToken().then((idToken) => {  // <------ Check this line
-            console.log(idToken); 
-            // It shows the Firebase token now
-          });
-      }
-  });*/
-  }
+  ngOnInit() {}
 
   ionViewDidLoad() {}
-
-  customTok() {}
 
   ionViewWillEnter() {
     this.authService.authenticationState.subscribe(state => {
@@ -84,10 +63,6 @@ export class WelcomePage implements OnInit {
   }
 
   login(email, password) {
-    //if(this.checked){
-    //   this.storage.set(this.key,this.email);
-    // }
-
     this.angularFireAuth.auth
       .signInWithEmailAndPassword(email, password)
       .then(user => {
@@ -101,8 +76,6 @@ export class WelcomePage implements OnInit {
   }
 
   async navTabs() {
-    //you can use either of below
     this.route.navigateByUrl('/app/tabs/(home:home)');
-    //this.navCtrl.navigateRoot('/app/tabs/(home:home)')
   }
 }
