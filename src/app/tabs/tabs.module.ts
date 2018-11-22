@@ -9,6 +9,7 @@ import { TabsPageRoutingModule } from './tabs.router.module';
 import { TabsPage } from './tabs.page';
 import { HomePageModule } from '../home/home.module';
 import { EnfrentamentoPageModule } from '../enfrentamento/enfrentamento.module';
+import { HumorPageModule } from '../humor/humor.module';
 import { WelcomePageModule } from '../welcome/welcome.module';
 import { OptionsPageModule } from '../options/options.module';
 
@@ -22,6 +23,7 @@ import { OptionsPageModule } from '../options/options.module';
     EnfrentamentoPageModule,
     WelcomePageModule,
     OptionsPageModule
+    HumorPageModule,
   ],
   declarations: [TabsPage]
 })

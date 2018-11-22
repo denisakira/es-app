@@ -19,7 +19,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

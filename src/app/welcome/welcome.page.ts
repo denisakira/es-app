@@ -33,22 +33,7 @@ export class WelcomePage implements OnInit {
     private route: Router,
     private authService: AuthenticationService,
     public firestore: AngularFirestore
-  ) {
-    this.angularFireAuth.authState.subscribe(auth => {
-      if (!auth) {
-        return;
-      }
-      console.log(auth.uid);
-      const db = this.firestore;
-      db.collection('pacientes')
-        .doc(auth.uid)
-        .get()
-        .toPromise()
-        .then(doc => {
-          this.userNome = doc.data().Nome;
-        });
-    });
-  }
+  ) { }
 
   ngOnInit() {}
 
@@ -58,7 +43,19 @@ export class WelcomePage implements OnInit {
     this.authService.authenticationState.subscribe(state => {
       if (state) {
         this.isLogged = true;
-
+        this.angularFireAuth.authState.subscribe(auth => {
+          //console.log(auth.uid);
+          var db = this.firestore;
+          db.collection('pacientes')
+            .doc(auth.uid)
+            .get()
+            .toPromise()
+            .then(doc => {
+              this.userNome = doc.data().Nome;
+              //console.log(this.userNome);
+            });
+        });
+        //console.log(this.angularFireAuth.auth.currentUser.uid);
       } else {
         this.isLogged = false;
       }

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Controle de Humor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <ion-card>
+    <ion-card-header>Humor:</ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="formHumor">
+        <ion-item>
+          <ion-range min="-100" max="100" required formControlName="humor">
+            <ion-label>
+              <ion-icon name="sad"></ion-icon>
+            </ion-label>
+            <ion-label>
+              <ion-icon name="happy"></ion-icon> <!-- deveria estar no lado direito -->
+            </ion-label>
+          </ion-range>
+        </ion-item>
+        <ion-item>
+          <ion-button round [disabled]="!formHumor?.valid" (click)="submitNovoHumor()">Salvar</ion-button>
+        </ion-item>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>Registros anteriores:</ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let humor of humores | async">{{ humor.value }}</ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { HomePage } from '../home/home.page';
 import { EnfrentamentoPage } from '../enfrentamento/enfrentamento.page';
+import { HumorPage } from '../humor/humor.page';
 import { WelcomePage } from '../welcome/welcome.page';
 import { OptionsPage } from '../options/options.page';
 
@@ -31,7 +32,12 @@ const routes: Routes = [
         path: 'options',
         outlet: 'options',
         component: OptionsPage
-      }
+      },
+      {
+        path: 'humor',
+        outlet: 'humor',
+        component: HumorPage
+      },
     ]
   },
   {
