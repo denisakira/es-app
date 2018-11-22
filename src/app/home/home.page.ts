@@ -37,7 +37,7 @@ export class HomePage implements OnInit {
   sendMessage(message: string) {
     this.emailComposer.isAvailable().then((available: boolean) => {
       const email = {
-        to: 'terapeuta@email.com',
+        to: this.user.EmailTerapeuta,
         subject: 'Terapia Cognitivo Comportamental - ' + this.user.Nome,
         body: message,
         isHtml: true
