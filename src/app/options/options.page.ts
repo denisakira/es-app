@@ -12,11 +12,10 @@ import { map } from 'rxjs/operators';
 })
 export class OptionsPage implements OnInit {
   profileForm: FormGroup = this.fb.group({
-    nome: [''],
-    email: ['', Validators.email],
-    password: [''],
-    terapeuta: [''],
-    email_terapeuta: ['']
+    nome: [null],
+    email: [null, Validators.email],
+    terapeuta: [null],
+    email_terapeuta: [null, Validators.email]
   });
   currUser: User;
   check = false;
@@ -32,6 +31,7 @@ export class OptionsPage implements OnInit {
     this.userService.getUser().subscribe(res => {
       this.currUser = res;
       this.check = true;
+      console.log(this.currUser);
     });
   }
 
@@ -39,27 +39,35 @@ export class OptionsPage implements OnInit {
     const data = this.profileForm.value;
     let update: User = this.currUser;
 
-    if (data.nome !== '') {
-      update = {
-        ...update,
+    if (data.nome) {
+      this.currUser = {
+        ...this.currUser,
         Nome: data.nome
       };
     }
 
-    if (data.email !== '') {
-      update = {
-        ...update,
+    if (data.email) {
+      this.currUser = {
+        ...this.currUser,
         Email: data.email
       };
     }
 
-    if (data.terapeuta !== '') {
-      update = {
-        ...update,
+    if (data.terapeuta) {
+      this.currUser = {
+        ...this.currUser,
         NomeTerapeuta: data.terapeuta
       };
     }
-    await this.userService.updateUser(update);
+
+    if (data.email_terapeuta) {
+      this.currUser = {
+        ...this.currUser,
+        EmailTerapeuta: data.email_terapeuta
+      };
+    }
+    console.log(this.currUser);
+    await this.userService.updateUser(this.currUser);
     this.profileForm.reset();
     this.router.navigateByUrl('/app/tabs/(home:home)');
   }
