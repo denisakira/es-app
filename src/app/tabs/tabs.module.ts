@@ -22,7 +22,7 @@ import { OptionsPageModule } from '../options/options.module';
     HomePageModule,
     EnfrentamentoPageModule,
     PensamentoAutomaticoPageModule,
-    OptionsPageModule
+    OptionsPageModule,
     HumorPageModule,
   ],
   declarations: [TabsPage]
