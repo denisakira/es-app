@@ -38,26 +38,26 @@ export class OptionsPage implements OnInit {
     let update: User = this.currUser;
 
     if (data.nome !== '') {
-      update = {
-        ...update,
+      this.currUser = {
+        ...this.currUser,
         Nome: data.nome
       };
     }
 
     if (data.email !== '') {
-      update = {
-        ...update,
+      this.currUser = {
+        ...this.currUser,
         Email: data.email
       };
     }
 
     if (data.terapeuta !== '') {
-      update = {
-        ...update,
+      this.currUser = {
+        ...this.currUser,
         NomeTerapeuta: data.terapeuta
       };
     }
-    await this.userService.updateUser(update);
+    await this.userService.updateUser(this.currUser);
     this.profileForm.reset();
     this.router.navigateByUrl('/app/tabs/(home:home)');
   }

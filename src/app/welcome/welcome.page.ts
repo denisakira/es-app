@@ -8,10 +8,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, Subject, ReplaySubject, from, of, range } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
 
-//pacotes instalados:
-//npm install --save @ionic/storage
-//npm i @ionic/angular
-//npm i @angular/fire
+// pacotes instalados:
+// npm install --save @ionic/storage
+// npm i @ionic/angular
+// npm i @angular/fire
 
 @Component({
   selector: 'app-welcome',
