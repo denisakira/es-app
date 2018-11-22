@@ -5,10 +5,13 @@ import {
   AngularFirestoreDocument
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { map } from 'rxjs/operators';
 
 export interface User {
-  nome: string;
-  email: string;
+  Nome: string;
+  Email: string;
+  NomeTerapeuta: string;
 }
 
 @Injectable({
@@ -21,18 +24,25 @@ export class UserService {
   users: Observable<User[]>;
   user: Observable<User>;
 
-  constructor(private afs: AngularFirestore) {
-    this.usersCollection = afs.collection<User>('users');
-    this.userDoc = afs.doc<User>('users/FV2xoyvNhech7CuvYgGtFqjmQbs1');
-    this.users = this.usersCollection.valueChanges();
-    this.user = this.userDoc.valueChanges();
+  constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
+    this.usersCollection = afs.collection<User>('pacientes');
+    this.userDoc = this.usersCollection.doc<User>(afAuth.auth.currentUser.uid);
   }
 
   getUsers() {
+    this.users = this.usersCollection.valueChanges();
     return this.users;
   }
 
   getUser() {
+    this.user = this.userDoc.valueChanges();
     return this.user;
+  }
+
+  updateUser(user: User) {
+    const res = this.usersCollection
+      .doc(this.afAuth.auth.currentUser.uid)
+      .update(user);
+    console.log(res);
   }
 }
